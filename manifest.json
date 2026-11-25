@@ -1,0 +1,62 @@
+{
+  "name": "FewFeed V3 Beta",
+  "version": "9.5",
+  "manifest_version": 3,
+  "description": "Connects the FewFeed dashboard to your own social-media account in this browser so its tools can read and publish for you.",
+  "background": {
+    "service_worker": "bg.js"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icon-16.png",
+      "48": "icon-48.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://beta.fewfeeds.site/*"
+      ],
+      "js": [
+        "inject.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "https://beta.fewfeeds.site/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "all_frames": true
+    }
+  ],
+  "icons": {
+    "16": "icon-16.png",
+    "48": "icon-48.png",
+    "128": "icon-128.png"
+  },
+  "permissions": [
+    "declarativeNetRequest",
+    "declarativeNetRequestWithHostAccess",
+    "cookies"
+  ],
+  "host_permissions": [
+    "*://*.facebook.com/*",
+    "*://*.fbcdn.net/*",
+    "*://*.facebook.net/*",
+    "*://*.fb.com/*",
+    "*://*.tiktok.com/*",
+    "*://*.tiktokcdn.com/*",
+    "*://*.tiktokcdn-us.com/*",
+    "*://*.tikwm.com/*",
+    "*://*.tikmate.app/*",
+    "*://www.ggtiktok.com/*",
+    "*://*.youtube.com/*",
+    "*://api.flvto.site/*",
+    "https://beta.fewfeeds.site/*"
+  ]
+}
